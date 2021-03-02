@@ -1,1 +1,32 @@
-<p>country-list works!</p>
+<div
+  class="country-list-container row justify-content-center align-items-center"
+>
+  <div *ngIf="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="error">
+    <h2>Error :(</h2>
+  </div>
+  <div *ngFor="let country of countries" class="col-lg-4 col-md-6 my-2">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div
+          mat-card-avatar
+          class="card-header-image d-flex align-items-center"
+        >
+          {{ country.emoji }}
+        </div>
+        <mat-card-title>{{ country.name }}</mat-card-title>
+        <mat-card-subtitle>{{ country.capital }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-actions class="d-flex flex-wrap align-items-center">
+        <span *ngFor="let language of country.languages">
+          <button mat-flat-button color="primary" class="mr-1 mb-1">
+            {{ language.name }}
+          </button>
+        </span>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

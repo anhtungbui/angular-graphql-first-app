@@ -13,6 +13,8 @@ import { APOLLO_OPTIONS } from 'apollo-angular';
 
 // Use `HttpLink` from apollo to connect our client to an external GraphQL server
 import { HttpLink } from 'apollo-angular/http';
+
+// Use InMemoryCache to have a place to store data in
 import { InMemoryCache } from '@apollo/client/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CountryListComponent } from './components/country-list/country-list.component';
@@ -29,7 +31,20 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     MaterialModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APOLLO_OPTIONS,
+      useFactory: (httpLink: HttpLink) => {
+        return {
+          cache: new InMemoryCache(),
+          link: httpLink.create({
+            uri: 'https://countries.trevorblades.com/',
+          }),
+        };
+      },
+      deps: [HttpLink],
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
