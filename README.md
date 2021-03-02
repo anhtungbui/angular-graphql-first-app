@@ -1,27 +1,25 @@
-# GraphqlFirstApp
+# Countries GraphQL & Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.0.
+🌎 My first toy project built with GraphQL & Angular
 
-## Development server
+## Technologies
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Angular
+- GraphQL w/ Apollo-Angular Client
+- RxJS
+- Material Angular
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Using the [Countries Graphql API](https://github.com/trevorblades/countries) via `https://countries.trevorblades.com/`, the app can:
 
-## Build
+- Render a list of countries
+- Display the flag of the country
+- Name of the country and its capital
+- List of language(s) spoken in the country
+- Search for the language(s) spoken in the country. For example, inputting `germa` would definitely show at least 2 countries Germany and Austria
+- Extra: select 2 languages from the list and open Google Translate in a new tab with languages preselected for translation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Developed by
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+[Anh Tung Bui](https://anhtung.bui.com)
