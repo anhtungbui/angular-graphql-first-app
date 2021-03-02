@@ -4,25 +4,36 @@
       <span>Country List | GraphQL</span>
     </a>
   </div>
-  <div class="col-6"></div>
+  <div class="col-6">
+    <!-- <button (click)="changeQuery()">Change me</button> -->
+  </div>
   <div class="col-3">
     <mat-form-field class="form-field">
       <mat-label>Search language</mat-label>
-      <input matInput type="text" [(ngModel)]="value" />
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="query"
+        (ngModelChange)="onQueryChange($event)"
+      />
       <button
         mat-button
-        *ngIf="value"
+        *ngIf="query"
         matSuffix
         mat-icon-button
         aria-label="Clear"
-        (click)="value = ''"
+        (click)="query = ''"
       >
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
   </div>
   <div class="col-1">
-    <a href="https://github.com/anhtungbui" class="text-link" target="_blank">
+    <a
+      href="https://github.com/anhtungbui/angular-graphql-first-app"
+      class="text-link"
+      target="_blank"
+    >
       <button
         mat-icon-button
         class="example-icon favorite-icon"
