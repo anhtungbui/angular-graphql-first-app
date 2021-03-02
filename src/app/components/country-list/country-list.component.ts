@@ -1,6 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
-import { SearchService } from 'src/app/services/search.service';
+// import { SearchService } from 'src/app/services/search.service';
+import {
+  debounceTime,
+  map,
+  distinctUntilChanged,
+  filter,
+} from 'rxjs/operators';
+import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-country-list',
@@ -12,13 +19,37 @@ export class CountryListComponent implements OnInit {
   loading = true;
   error: any;
   query: string;
+  results: any[];
 
-  constructor(private apollo: Apollo, private searchService: SearchService) {}
+  @ViewChild('searchField', { static: true })
+  searchField: ElementRef;
+
+  constructor(private apollo: Apollo) {}
 
   ngOnInit(): void {
     this.getCountryListData();
 
-    this.searchService.currentQuery.subscribe((query) => (this.query = query));
+    // this.searchService.currentQuery.subscribe((query) => (this.query = query));
+
+    fromEvent(this.searchField.nativeElement, 'keyup')
+      .pipe(
+        map((event: any) => {
+          return event.target.value;
+        }),
+        filter((res) => res.length > 2),
+        debounceTime(1000),
+        distinctUntilChanged()
+      )
+      .subscribe((query) => {
+        this.results = this.countries.filter((country) => {
+          return country.name.toLowerCase().match(this.query);
+        });
+      });
+  }
+
+  onFieldReset(): void {
+    this.query = '';
+    this.results = [];
   }
 
   getCountryListData(): void {

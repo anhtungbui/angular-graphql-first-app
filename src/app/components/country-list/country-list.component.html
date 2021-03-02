@@ -1,38 +1,57 @@
+<div class="container mt-2">
+  <div class="d-flex justify-content-center">
+    <div class="col-md-6">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Search Capital and Language(s)</mat-label>
+        <input
+          [(ngModel)]="query"
+          matInput
+          #searchField
+          type="search"
+          class="form-control"
+          placeholder="Enter Country Name"
+        />
+        <button
+          mat-button
+          *ngIf="query"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="onFieldReset()"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="d-flex justify-content-center align-items-center">
+    <div *ngIf="loading">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div *ngIf="error">
+      <h2>Error :(</h2>
+    </div>
+  </div>
+</div>
+
 <div *ngIf="query" class="container my-2">
   <div>
     Search results for <b>{{ query }}</b>
   </div>
+  <div *ngIf="results.length > 0">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <app-country-detail [country]="results[0]"></app-country-detail>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div
-  class="country-list-container row justify-content-center align-items-center"
->
-  <div *ngIf="loading">
-    <mat-spinner></mat-spinner>
-  </div>
-  <div *ngIf="error">
-    <h2>Error :(</h2>
-  </div>
+<div class="country-list-container row justify-content-center">
   <div *ngFor="let country of countries" class="col-lg-4 col-md-6 my-2">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div
-          mat-card-avatar
-          class="card-header-image d-flex align-items-center"
-        >
-          {{ country.emoji }}
-        </div>
-        <mat-card-title>{{ country.name }}</mat-card-title>
-        <mat-card-subtitle>{{ country.capital }}</mat-card-subtitle>
-      </mat-card-header>
-
-      <mat-card-actions class="d-flex flex-wrap align-items-center">
-        <span *ngFor="let language of country.languages">
-          <button mat-flat-button color="primary" class="mr-1 mb-1">
-            {{ language.name }}
-          </button>
-        </span>
-      </mat-card-actions>
-    </mat-card>
+    <app-country-detail [country]="country"></app-country-detail>
   </div>
 </div>

@@ -19,9 +19,10 @@ import { InMemoryCache } from '@apollo/client/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CountryListComponent } from './components/country-list/country-list.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { CountryDetailComponent } from './components/country-detail/country-detail.component';
 
 @NgModule({
-  declarations: [AppComponent, CountryListComponent, NavbarComponent],
+  declarations: [AppComponent, CountryListComponent, NavbarComponent, CountryDetailComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

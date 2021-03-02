@@ -1,0 +1,22 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="card-header-image d-flex align-items-center">
+      {{ country.emoji }}
+    </div>
+    <mat-card-title>{{ country.name }}</mat-card-title>
+    <mat-card-subtitle>{{ country.capital }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-actions
+    class="d-flex flex-wrap align-items-center justify-content-center"
+  >
+    <span
+      *ngFor="let language of country.languages"
+      class="languages-container"
+    >
+      <button mat-flat-button color="primary" class="mr-1 mb-1">
+        {{ language.name }}
+      </button>
+    </span>
+  </mat-card-actions>
+</mat-card>

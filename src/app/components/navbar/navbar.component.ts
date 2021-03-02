@@ -7,7 +7,6 @@ import { SearchService } from 'src/app/services/search.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  value = '';
   query: string;
 
   constructor(private searchService: SearchService) {}
