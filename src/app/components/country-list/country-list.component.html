@@ -41,10 +41,13 @@
   <div>
     Search results for <b>{{ query }}</b>
   </div>
-  <div *ngIf="results.length > 0">
+  <div *ngIf="results">
     <div class="row">
       <div class="col-md-6 offset-md-3">
-        <app-country-detail [country]="results[0]"></app-country-detail>
+        <app-country-detail
+          *ngIf="results.length > 0"
+          [country]="results[0]"
+        ></app-country-detail>
       </div>
     </div>
   </div>

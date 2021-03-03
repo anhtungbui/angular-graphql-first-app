@@ -37,7 +37,7 @@ export class CountryListComponent implements OnInit {
           return event.target.value;
         }),
         filter((res) => res.length > 2),
-        debounceTime(1000),
+        debounceTime(500),
         distinctUntilChanged()
       )
       .subscribe((query) => {
