@@ -1,14 +1,44 @@
 <mat-toolbar color="primary" class="row navbar align-items-center px-5">
-  <div class="col-2">
+  <div class="col-4">
     <a href="/" class="text-link">
-      <!-- <span class="d"> -->
       <mat-icon class="mr-2" [inline]="true">language</mat-icon>
-      <!-- </span> -->
-      <span class="branding-text">Countries by GraphQL & Angular</span>
+      <span class="branding-text d-none-md"
+        >Countries by GraphQL & Angular</span
+      >
     </a>
   </div>
-  <div class="col-6"></div>
-  <div class="col-3"></div>
+  <div class="col-7 d-flex align-items-center">
+    <button *ngIf="firstLanguage" mat-raised-button color="accent">
+      From {{ firstLanguage }}
+    </button>
+    <button
+      *ngIf="secondLanguage"
+      mat-raised-button
+      color="accent"
+      class="ml-2"
+    >
+      To {{ secondLanguage }}
+    </button>
+    <button
+      *ngIf="firstLanguage && secondLanguage"
+      mat-flat-button
+      color="accent"
+      class="ml-2"
+      (click)="onResetClick()"
+    >
+      <mat-icon [inline]="true" class="mr-2">close</mat-icon><span>Reset</span>
+    </button>
+    <button
+      *ngIf="firstLanguage && secondLanguage"
+      mat-flat-button
+      color="accent"
+      class="ml-2"
+      (click)="onTranslateClick()"
+    >
+      <mat-icon [inline]="true" class="mr-2">g_translate</mat-icon
+      ><span>Translate</span>
+    </button>
+  </div>
   <div class="col-1">
     <a
       href="https://github.com/anhtungbui/angular-graphql-first-app"

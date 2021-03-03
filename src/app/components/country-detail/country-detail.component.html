@@ -14,7 +14,12 @@
       *ngFor="let language of country.languages"
       class="languages-container"
     >
-      <button mat-flat-button color="primary" class="mr-1 mb-1">
+      <button
+        mat-flat-button
+        color="primary"
+        class="mr-1 mb-1"
+        (click)="onLanguageClick(language)"
+      >
         {{ language.name }}
       </button>
     </span>

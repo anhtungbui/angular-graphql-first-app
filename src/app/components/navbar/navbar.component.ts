@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchService } from 'src/app/services/search.service';
+import { TranslationService } from 'src/app/services/translation.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,15 +7,36 @@ import { SearchService } from 'src/app/services/search.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  query: string;
-
-  constructor(private searchService: SearchService) {}
+  firstLanguage: string;
+  firstLanguageCode: string;
+  secondLanguage: string;
+  secondLanguageCode: string;
+  constructor(private translationService: TranslationService) {}
 
   ngOnInit(): void {
-    this.searchService.currentQuery.subscribe((q) => (this.query = q));
+    this.translationService.firstLanguage.subscribe(
+      (language) => (this.firstLanguage = language)
+    );
+    this.translationService.firstLanguageCode.subscribe(
+      (languageCode) => (this.firstLanguageCode = languageCode)
+    );
+    this.translationService.secondLanguage.subscribe(
+      (language) => (this.secondLanguage = language)
+    );
+    this.translationService.secondLanguageCode.subscribe(
+      (languageCode) => (this.secondLanguageCode = languageCode)
+    );
   }
 
-  onQueryChange(e: Event) {
-    this.searchService.changeQuery(this.query);
+  onResetClick(): void {
+    this.translationService.changeFirstLanguage('');
+    this.translationService.changeFirstLanguageCode('');
+    this.translationService.changeSecondLanguage('');
+    this.translationService.changeSecondLanguageCode('');
+  }
+
+  onTranslateClick(): void {
+    const url = `https://translate.google.com/?sl=${this.firstLanguageCode}&tl=${this.secondLanguageCode}&op=translate`;
+    window.open(url, '_blank');
   }
 }
