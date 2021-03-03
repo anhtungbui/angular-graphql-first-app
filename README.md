@@ -2,6 +2,8 @@
 
 My first toy project built with GraphQL & Angular
 
+## [🔗 Live Demo](https://angular-graphql-countries.netlify.app)
+
 ## Technologies
 
 Angular with Material Design, TypeScript, RxJS & GraphQL with Apollo-Angular Client
