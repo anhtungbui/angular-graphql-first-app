@@ -41,6 +41,9 @@ export class CountryListComponent implements OnInit {
         distinctUntilChanged()
       )
       .subscribe((query) => {
+        // if (this.results.length === 0) {
+        //   this.loading = true;
+        // }
         this.results = this.countries.filter((country) => {
           return country.name.toLowerCase().match(this.query);
         });

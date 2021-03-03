@@ -1,13 +1,13 @@
 <mat-toolbar color="primary" class="row navbar align-items-center px-5">
-  <div class="col-4">
+  <div class="col-lg-2 col-md-10 order-lg-1 order-md-1">
     <a href="/" class="text-link">
       <mat-icon class="mr-2" [inline]="true">language</mat-icon>
-      <span class="branding-text d-none-md"
-        >Countries by GraphQL & Angular</span
-      >
+      <span class="branding-text">Countries</span>
     </a>
   </div>
-  <div class="col-7 d-flex align-items-center">
+  <div
+    class="col-lg-8 row justify-content-center align-items-center order-lg-2 order-md-3"
+  >
     <button *ngIf="firstLanguage" mat-raised-button color="accent">
       From {{ firstLanguage }}
     </button>
@@ -39,7 +39,7 @@
       ><span>Translate</span>
     </button>
   </div>
-  <div class="col-1">
+  <div class="col-lg-2 col-md-2 order-lg-3 order-md-2 d-none d-md-block">
     <a
       href="https://github.com/anhtungbui/angular-graphql-first-app"
       class="text-link"
